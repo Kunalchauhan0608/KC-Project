@@ -42,7 +42,7 @@ export default function HomePage() {
             <p className="text-[#9090b0] text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.75] max-w-[580px] mb-9 font-[Outfit] animate-fade-up delay-200">
               SJM helps startups and established brands scale faster with expert SEO, Google Ads,
               Meta Ads, and full-funnel performance marketing. Every campaign is built around
-              measurable ROIno fluff, just results.
+              measurable ROI no fluff, just results.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-14 animate-fade-up delay-300">
