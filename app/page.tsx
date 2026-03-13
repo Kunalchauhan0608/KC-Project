@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SERVICES, STATS, TESTIMONIALS, CASE_STUDIES, BLOG_POSTS, FAQS, INDUSTRIES, SEO_PROCESS } from "@/lib/data";
-import { SectionHeader, StatCard, ServiceCard, TestimonialCard, CaseCard, FAQAccordion, BlogCard, CTABanner } from "@/components/UI";
+import {
+  SERVICES, STATS, TESTIMONIALS, CASE_STUDIES,
+  BLOG_POSTS, FAQS, INDUSTRIES, SEO_PROCESS,
+} from "@/lib/data";
+import {
+  SectionHeader, StatCard, ServiceCard, TestimonialCard,
+  CaseCard, FAQAccordion, BlogCard, CTABanner,
+} from "@/components/UI";
 
 export const metadata: Metadata = {
-  title: "SJM — Smart Digital Marketing Agency | SEO, Google Ads & Performance Marketing",
+  title: "SJM — Digital Marketing Agency | SEO, Google Ads & Performance Marketing",
   description:
-    "SJM (Shreeji Marketers) is a performance-driven digital marketing agency helping brands scale with advanced SEO, Google Ads, Meta Ads, and data-driven campaigns that deliver measurable ROI.",
+    "SJM is a performance-driven digital marketing agency helping brands scale with advanced SEO, Google Ads, Meta Ads, and data-driven campaigns that deliver measurable ROI.",
 };
 
 export default function HomePage() {
@@ -14,14 +20,11 @@ export default function HomePage() {
     <>
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-[72px]">
-        {/* Background glows */}
         <div className="glow-blob w-[700px] h-[700px] bg-accent/10 -top-40 -right-60" />
-        <div className="glow-blob w-[400px] h-[400px] bg-accent/6 bottom-0 -left-40" />
-        {/* Noise overlay */}
+        <div className="glow-blob w-[400px] h-[400px] bg-accent/[0.06] bottom-0 -left-40" />
         <div className="noise absolute inset-0 pointer-events-none" />
 
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10 py-20 w-full">
-          {/* Main hero content */}
           <div className="max-w-[780px]">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm text-accent font-[Outfit] font-semibold mb-6 animate-fade-in">
@@ -29,7 +32,6 @@ export default function HomePage() {
               India&apos;s #1 Performance-Driven Digital Marketing Agency
             </div>
 
-            {/* H1 — primary keyword front-loaded */}
             <h1 className="font-[Outfit] font-extrabold text-[clamp(2.4rem,5.5vw,4rem)] leading-[1.08] tracking-tight text-white mb-6 animate-fade-up">
               Digital Marketing Agency
               <br />
@@ -37,8 +39,10 @@ export default function HomePage() {
               <span className="grad-text">Real Business Growth</span>
             </h1>
 
-            <p className="text-[#9090b0] text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.75] max-w-[580px] mb-9 animate-fade-up delay-200">
-              SJM helps startups and established brands scale faster with expert SEO, Google Ads, Meta Ads, and full-funnel performance marketing. Every campaign is built around measurable ROI — no fluff, just results.
+            <p className="text-[#9090b0] text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.75] max-w-[580px] mb-9 font-[Outfit] animate-fade-up delay-200">
+              SJM helps startups and established brands scale faster with expert SEO, Google Ads,
+              Meta Ads, and full-funnel performance marketing. Every campaign is built around
+              measurable ROI — no fluff, just results.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-14 animate-fade-up delay-300">
@@ -69,21 +73,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/*
-           * Floating "Live Results" card
-           * — Desktop: absolute-positioned right column
-           * — Tablet/Mobile: static block below hero copy, full-width
-           */}
-          <div
-            className="
-              mt-12 xl:mt-0
-              xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2
-              bg-[#10121a] border border-white/7 rounded-2xl p-6
-              w-full sm:max-w-[360px] xl:w-[270px]
-              mx-auto xl:mx-0
-              animate-float shadow-2xl shadow-black/40
-            "
-          >
+          {/* Floating card — desktop right / mobile below */}
+          <div className="mt-12 xl:mt-0 xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2 bg-[#10121a] border border-white/[0.07] rounded-2xl p-6 w-full sm:max-w-[360px] xl:w-[270px] mx-auto xl:mx-0 animate-float shadow-2xl shadow-black/40">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse" />
               <span className="text-[#10b981] text-xs font-[Outfit] font-bold uppercase tracking-wider">
@@ -98,7 +89,7 @@ export default function HomePage() {
             ].map(({ l, v, c }) => (
               <div
                 key={l}
-                className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 gap-4"
+                className="flex justify-between items-center py-3 border-b border-white/[0.05] last:border-0 gap-4"
               >
                 <span className="text-[#7a7a95] text-sm font-[Outfit] leading-snug">{l}</span>
                 <span className="font-[Outfit] font-bold text-base shrink-0" style={{ color: c }}>
@@ -128,13 +119,12 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── ABOUT SNIPPET ─────────────────────────────────── */}
-      <section className="py-24 px-4" aria-labelledby="about-heading">
+      {/* ── ABOUT ────────────────────────────────────────── */}
+      <section className="py-24 px-4">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeader
               tag="About SJM"
-              id="about-heading"
               title='We Are Your <span class="grad-text">Digital Growth</span> Partner'
               sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy — building campaigns that directly improve your revenue."
             />
@@ -186,12 +176,11 @@ export default function HomePage() {
 
       <div className="divider mx-4 sm:mx-6" />
 
-      {/* ── SERVICES GRID ─────────────────────────────────── */}
-      <section className="py-24 px-4" aria-labelledby="services-heading">
+      {/* ── SERVICES ─────────────────────────────────────── */}
+      <section className="py-24 px-4">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Our Services"
-            id="services-heading"
             title='Full-Stack Digital Marketing <span class="grad-text">Services</span>'
             sub="From SEO to paid ads, social media to web development — SJM covers the entire digital spectrum with specialist-level expertise and accountable results."
             center
@@ -213,50 +202,42 @@ export default function HomePage() {
 
       <div className="divider mx-4 sm:mx-6" />
 
-      {/* ── WHY CHOOSE SJM ────────────────────────────────── */}
-      <section className="py-24 px-4 bg-white/[0.01]" aria-labelledby="why-sjm-heading">
+      {/* ── WHY SJM ──────────────────────────────────────── */}
+      <section className="py-24 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Why SJM"
-            id="why-sjm-heading"
             title='Why 500+ Brands Trust <span class="grad-text">SJM</span>'
             center
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               {
-                icon: "📊",
                 title: "100% Data-Driven Decisions",
                 desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork — ever.",
               },
               {
-                icon: "🎯",
                 title: "Revenue-Focused Marketing",
                 desc: "We optimise for revenue and profit margins, not impressions or clicks. Your growth is our KPI.",
               },
               {
-                icon: "🔄",
                 title: "Full-Funnel Expertise",
                 desc: "From first touch to repeat purchase — SJM builds marketing systems that perform at every stage of the funnel.",
               },
               {
-                icon: "⚡",
                 title: "Fast Campaign Execution",
                 desc: "Campaigns go live within days. Our agile teams move at the pace your business demands.",
               },
               {
-                icon: "🤝",
                 title: "Radical Transparency",
                 desc: "Live dashboards, monthly performance reports, weekly calls. No surprises — just full visibility.",
               },
               {
-                icon: "🚀",
                 title: "Scalable Growth Systems",
                 desc: "We engineer repeatable, compounding growth systems — not short-lived campaigns that lose momentum.",
               },
-            ].map(({ icon, title, desc }) => (
-              <div key={title} className="bg-[#10121a] border border-white/7 rounded-2xl p-7 card-hover">
-                <div className="text-3xl mb-4" aria-hidden="true">{icon}</div>
+            ].map(({ title, desc }) => (
+              <div key={title} className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-7 card-hover">
                 <h3 className="font-[Outfit] font-bold text-[1.05rem] text-white mb-2.5">{title}</h3>
                 <p className="text-[#7a7a95] text-sm leading-relaxed font-[Outfit]">{desc}</p>
               </div>
@@ -265,20 +246,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SEO PROCESS ───────────────────────────────────── */}
-      <section className="py-24 px-4" aria-labelledby="process-heading">
+      {/* ── SEO PROCESS ──────────────────────────────────── */}
+      <section className="py-24 px-4">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <SectionHeader
               tag="SEO Process"
-              id="process-heading"
               title='SJM&apos;s Proven <span class="grad-text">SEO Growth</span> Framework'
               sub="A systematic, repeatable 5-step SEO process that takes your website from invisible to industry-leading in organic search rankings."
             />
             <div className="space-y-6">
               {SEO_PROCESS.map(({ n, t, d }) => (
                 <div key={n} className="flex gap-4">
-                  <div className="w-11 h-11 min-w-[44px] bg-accent/12 border border-accent/25 rounded-full flex items-center justify-center font-[Outfit] font-extrabold text-accent text-sm">
+                  <div className="w-11 h-11 min-w-[44px] bg-accent/[0.12] border border-accent/25 rounded-full flex items-center justify-center font-[Outfit] font-extrabold text-accent text-sm">
                     {n}
                   </div>
                   <div>
@@ -290,15 +270,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="bg-[#10121a] border border-white/7 rounded-2xl p-8 lg:sticky lg:top-24">
+          <div className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-8 lg:sticky lg:top-24">
             <h3 className="font-[Outfit] font-bold text-[1.1rem] text-white mb-6">
               Typical SEO Results Timeline
             </h3>
             <div className="space-y-5">
               {[
-                { label: "Month 1–2: Technical Audit & Indexing Fixes", pct: 25 },
-                { label: "Month 3–4: Keyword Rankings & Content Growth",  pct: 55 },
-                { label: "Month 5–6: Page 1 Rankings Emerge",             pct: 75 },
+                { label: "Month 1–2: Technical Audit & Indexing Fixes",    pct: 25 },
+                { label: "Month 3–4: Keyword Rankings & Content Growth",   pct: 55 },
+                { label: "Month 5–6: Page 1 Rankings Emerge",              pct: 75 },
                 { label: "Month 7+: Domain Authority & Sustained Traffic", pct: 95 },
               ].map(({ label, pct }) => (
                 <div key={label}>
@@ -322,12 +302,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CASE STUDIES ──────────────────────────────────── */}
-      <section className="py-24 px-4 bg-white/[0.01]" aria-labelledby="results-heading">
+      {/* ── CASE STUDIES ─────────────────────────────────── */}
+      <section className="py-24 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Case Studies"
-            id="results-heading"
             title='Proven Results for <span class="grad-text">Real Businesses</span>'
             sub="Numbers don't lie. Here's a snapshot of measurable growth SJM has driven across industries and business sizes."
             center
@@ -348,12 +327,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ──────────────────────────────────── */}
-      <section className="py-24 px-4" aria-labelledby="testimonials-heading">
+      {/* ── TESTIMONIALS ─────────────────────────────────── */}
+      <section className="py-24 px-4">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Client Reviews"
-            id="testimonials-heading"
             title='What SJM <span class="grad-text">Clients Say</span>'
             center
           />
@@ -365,12 +343,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INDUSTRIES ────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-white/[0.01]" aria-labelledby="industries-heading">
+      {/* ── INDUSTRIES ───────────────────────────────────── */}
+      <section className="py-20 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto text-center">
           <SectionHeader
             tag="Industries We Serve"
-            id="industries-heading"
             title='Digital Marketing Across <span class="grad-text">12+ Industries</span>'
             center
           />
@@ -378,7 +355,7 @@ export default function HomePage() {
             {INDUSTRIES.map((ind) => (
               <div
                 key={ind}
-                className="bg-[#10121a] border border-white/7 rounded-full px-5 py-2.5 text-sm font-[Outfit] text-[#9090b0] hover:border-accent/30 hover:text-accent transition-all cursor-default"
+                className="bg-[#10121a] border border-white/[0.07] rounded-full px-5 py-2.5 text-sm font-[Outfit] text-[#9090b0] hover:border-accent/30 hover:text-accent transition-all cursor-default"
               >
                 {ind}
               </div>
@@ -387,13 +364,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── BLOG PREVIEW ──────────────────────────────────── */}
-      <section className="py-24 px-4" aria-labelledby="blog-heading">
+      {/* ── BLOG ─────────────────────────────────────────── */}
+      <section className="py-24 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <SectionHeader
               tag="Digital Marketing Blog"
-              id="blog-heading"
               title='Marketing <span class="grad-text">Insights & Strategies</span>'
             />
             <Link href="/blog" className="text-accent font-[Outfit] font-bold text-sm hover:underline shrink-0">
@@ -408,12 +384,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FAQ ───────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-white/[0.01]" aria-labelledby="faq-heading">
+      {/* ── FAQ ──────────────────────────────────────────── */}
+      <section className="py-20 px-4 bg-white/[0.01]">
         <div className="max-w-[760px] mx-auto">
           <SectionHeader
             tag="FAQ"
-            id="faq-heading"
             title='Frequently Asked Questions <span class="grad-text">About SJM</span>'
             center
           />
@@ -421,7 +396,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────── */}
+      {/* ── CTA ──────────────────────────────────────────── */}
       <CTABanner
         title='Ready to Grow? Let&apos;s Build Your <span class="grad-text">Digital Success Story</span>'
         sub="Book a free 30-minute strategy session with an SJM expert. No commitment — just a clear roadmap to grow your business online."
