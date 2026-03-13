@@ -10,7 +10,7 @@ import {
 } from "@/components/UI";
 
 export const metadata: Metadata = {
-  title: "SJM — Digital Marketing Agency | SEO, Google Ads & Performance Marketing",
+  title: "SJM - Digital Marketing Agency | SEO, Google Ads & Performance Marketing",
   description:
     "SJM is a performance-driven digital marketing agency helping brands scale with advanced SEO, Google Ads, Meta Ads, and data-driven campaigns that deliver measurable ROI.",
 };
@@ -42,7 +42,7 @@ export default function HomePage() {
             <p className="text-[#9090b0] text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.75] max-w-[580px] mb-9 font-[Outfit] animate-fade-up delay-200">
               SJM helps startups and established brands scale faster with expert SEO, Google Ads,
               Meta Ads, and full-funnel performance marketing. Every campaign is built around
-              measurable ROI no fluff, just results.
+              measurable ROI, no fluff, just results.
             </p>
 
             <div className="flex flex-wrap gap-3 mb-14 animate-fade-up delay-300">
@@ -126,13 +126,13 @@ export default function HomePage() {
             <SectionHeader
               tag="About SJM"
               title='We Are Your <span class="grad-text">Digital Growth</span> Partner'
-              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy — building campaigns that directly improve your revenue."
+              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy, building campaigns that directly improve your revenue."
             />
             <ul className="space-y-3 mb-8" role="list">
               {[
                 "Transparent reporting with real-time client dashboards",
                 "Dedicated account manager assigned to every project",
-                "Data-first methodology — zero vanity metrics, only business results",
+                "Data-first methodology, zero vanity metrics, only business results",
                 "Industry specialists across 12+ verticals and markets",
                 "Proven growth frameworks delivering consistent, compounding ROI",
               ].map((t) => (
@@ -182,7 +182,7 @@ export default function HomePage() {
           <SectionHeader
             tag="Our Services"
             title='Full-Stack Digital Marketing <span class="grad-text">Services</span>'
-            sub="From SEO to paid ads, social media to web development — SJM covers the entire digital spectrum with specialist-level expertise and accountable results."
+            sub="From SEO to paid ads, social media to web development, SJM covers the entire digital spectrum with specialist-level expertise and accountable results."
             center
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -214,7 +214,7 @@ export default function HomePage() {
             {[
               {
                 title: "100% Data-Driven Decisions",
-                desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork — ever.",
+                desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork ever.",
               },
               {
                 title: "Revenue-Focused Marketing",
@@ -222,7 +222,7 @@ export default function HomePage() {
               },
               {
                 title: "Full-Funnel Expertise",
-                desc: "From first touch to repeat purchase — SJM builds marketing systems that perform at every stage of the funnel.",
+                desc: "From first touch to repeat purchase, SJM builds marketing systems that perform at every stage of the funnel.",
               },
               {
                 title: "Fast Campaign Execution",
@@ -230,11 +230,11 @@ export default function HomePage() {
               },
               {
                 title: "Radical Transparency",
-                desc: "Live dashboards, monthly performance reports, weekly calls. No surprises — just full visibility.",
+                desc: "Live dashboards, monthly performance reports, weekly calls. No surprises, just full visibility.",
               },
               {
                 title: "Scalable Growth Systems",
-                desc: "We engineer repeatable, compounding growth systems — not short-lived campaigns that lose momentum.",
+                desc: "We engineer repeatable, compounding growth systems, not short-lived campaigns that lose momentum.",
               },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-7 card-hover">
@@ -268,6 +268,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
+            
           </div>
 
           <div className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-8 lg:sticky lg:top-24">
