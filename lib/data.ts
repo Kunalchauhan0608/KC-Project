@@ -382,5 +382,5 @@ export const SEO_PROCESS = [
   { n: "02", t: "Keyword & Competitor Research", d: "Map the full keyword landscape, identify quick wins, and expose gaps in competitor strategies." },
   { n: "03", t: "On-Page & Technical Optimization", d: "Fix structural issues, optimize all content, and bring Core Web Vitals up to benchmark." },
   { n: "04", t: "Content & Authority Building", d: "Create topically authoritative content and earn high-quality backlinks from relevant sources." },
-  { n: "05", t: "Monitor, Report & Scale", d: "Track rankings, traffic, and conversions weekly — then double down on what moves the needle." },
+  { n: "05", t: "Monitor, Report & Scale", d: "Track rankings, traffic, and conversions weekly, then double down on what moves the needle." },
 ];
