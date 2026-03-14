@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import {
   SERVICES, STATS, TESTIMONIALS, CASE_STUDIES,
   BLOG_POSTS, FAQS, INDUSTRIES, SEO_PROCESS,
@@ -9,72 +10,190 @@ import {
   CaseCard, FAQAccordion, BlogCard, CTABanner,
 } from "@/components/UI";
 
-export const metadata: Metadata = {
-  title: "SJM - Digital Marketing Agency | SEO, Google Ads & Performance Marketing",
-  description:
-    "SJM is a performance-driven digital marketing agency helping brands scale with advanced SEO, Google Ads, Meta Ads, and data-driven campaigns that deliver measurable ROI.",
-};
+// ── Service category map ─────────────────────────────────
+const SERVICE_CATEGORIES = [
+  {
+    key: "performance",
+    label: "Performance Marketing",
+    ids: ["seo", "google-ads", "meta-ads"],
+  },
+  {
+    key: "content",
+    label: "Content & Social",
+    ids: ["social-media", "meme-marketing", "video-creation"],
+  },
+  {
+    key: "dev",
+    label: "Development & Design",
+    ids: ["web-development", "graphic-designing"],
+  },
+  {
+    key: "growth",
+    label: "Growth & Strategy",
+    ids: ["ecommerce", "digital-marketing", "growth-hacking"],
+  },
+] as const;
 
+type CategoryKey = (typeof SERVICE_CATEGORIES)[number]["key"];
+
+// ── Tabbed Services Component ────────────────────────────
+function TabbedServices() {
+  const [active, setActive] = useState<CategoryKey>("performance");
+
+  const currentIds = SERVICE_CATEGORIES.find((c) => c.key === active)!.ids;
+  const visibleServices = SERVICES.filter((s) => currentIds.includes(s.id as never));
+
+  return (
+    <div>
+      {/* Category Tab Buttons — horizontally scrollable on mobile */}
+      <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1">
+        {SERVICE_CATEGORIES.map((cat) => (
+          <button
+            key={cat.key}
+            onClick={() => setActive(cat.key)}
+            className={`shrink-0 px-5 py-2.5 rounded-xl text-sm font-[Outfit] font-semibold border transition-all duration-200 whitespace-nowrap ${
+              active === cat.key
+                ? "bg-gradient-to-r from-accent to-[#ea580c] text-white border-transparent shadow-lg shadow-accent/20"
+                : "bg-[#10121a] border-white/[0.07] text-[#9090b0] hover:border-accent/30 hover:text-accent"
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Service Cards — animated on tab switch */}
+      <div
+        key={active}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 animate-fade-up"
+      >
+        {visibleServices.map((s) => (
+          <ServiceCard
+            key={s.id}
+            emoji={s.emoji}
+            title={s.shortLabel}
+            desc={s.tagline}
+            href={`/services/${s.id}`}
+            color={s.color}
+          />
+        ))}
+      </div>
+
+      {/* View all link */}
+      <div className="text-center mt-8">
+        <Link
+          href="/services"
+          className="inline-flex items-center gap-2 border border-white/15 text-white font-[Outfit] font-semibold px-6 py-3 rounded-xl hover:border-accent/40 hover:text-accent transition-all text-sm"
+        >
+          View All Services →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+// ── Page ─────────────────────────────────────────────────
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-[72px]">
+      {/*
+       * ── HERO ───────────────────────────────────────────
+       * Aspect ratio 2.16:1 → at 1920px wide ≈ 888px tall.
+       * Using aspect-[2.16/1] with min/max height guards so
+       * it never collapses on very small or very large screens.
+       * pt-[72px] accounts for the fixed navbar height.
+       */}
+      <section
+        className="
+          relative w-full overflow-hidden
+          flex items-center
+          pt-[72px]
+          aspect-[2.16/1]
+          min-h-[520px]
+          max-h-[920px]
+        "
+      >
+        {/* Background glows */}
         <div className="glow-blob w-[700px] h-[700px] bg-accent/10 -top-40 -right-60" />
         <div className="glow-blob w-[400px] h-[400px] bg-accent/[0.06] bottom-0 -left-40" />
         <div className="noise absolute inset-0 pointer-events-none" />
 
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10 py-20 w-full">
-          <div className="max-w-[780px]">
+        {/*
+         * Inner container:
+         * On xl+ the floating card is absolutely positioned so the
+         * left column can live inside max-w-[780px] while the card
+         * is pinned to the right edge — both vertically centered
+         * relative to the section height via top-1/2 / -translate-y-1/2.
+         */}
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 relative z-10 w-full h-full flex items-center">
+
+          {/* Left: headline + body + CTAs + stats */}
+          <div className="max-w-[680px] w-full">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm text-accent font-[Outfit] font-semibold mb-6 animate-fade-in">
+            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-4 py-2 text-sm text-accent font-[Outfit] font-semibold mb-5 animate-fade-in">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               India&apos;s #1 Performance-Driven Digital Marketing Agency
             </div>
 
-            <h1 className="font-[Outfit] font-extrabold text-[clamp(2.4rem,5.5vw,4rem)] leading-[1.08] tracking-tight text-white mb-6 animate-fade-up">
+            <h1 className="font-[Outfit] font-extrabold text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.08] tracking-tight text-white mb-5 animate-fade-up">
               Digital Marketing Agency
               <br />
               That Delivers{" "}
               <span className="grad-text">Real Business Growth</span>
             </h1>
 
-            <p className="text-[#9090b0] text-[clamp(1rem,1.5vw,1.125rem)] leading-[1.75] max-w-[580px] mb-9 font-[Outfit] animate-fade-up delay-200">
+            <p className="text-[#9090b0] text-[clamp(0.9rem,1.3vw,1.05rem)] leading-[1.7] max-w-[560px] mb-7 font-[Outfit] animate-fade-up delay-200">
               SJM helps startups and established brands scale faster with expert SEO, Google Ads,
               Meta Ads, and full-funnel performance marketing. Every campaign is built around
-              measurable ROI, no fluff, just results.
+              measurable ROI — no fluff, just results.
             </p>
 
-            <div className="flex flex-wrap gap-3 mb-14 animate-fade-up delay-300">
+            <div className="flex flex-wrap gap-3 mb-10 animate-fade-up delay-300">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-accent to-[#ea580c] text-white font-[Outfit] font-bold px-7 py-4 rounded-xl shadow-xl shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all animate-pulse-glow text-base"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-accent to-[#ea580c] text-white font-[Outfit] font-bold px-6 py-3.5 rounded-xl shadow-xl shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all animate-pulse-glow text-sm"
               >
                 Get Free Strategy Session →
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 border border-white/15 text-white font-[Outfit] font-semibold px-7 py-4 rounded-xl hover:border-accent/40 hover:text-accent transition-all text-base"
+                className="inline-flex items-center gap-2 border border-white/15 text-white font-[Outfit] font-semibold px-6 py-3.5 rounded-xl hover:border-accent/40 hover:text-accent transition-all text-sm"
               >
                 Explore Services
               </Link>
             </div>
 
             {/* Stats row */}
-            <div className="flex flex-wrap gap-8 animate-fade-up delay-400">
+            <div className="flex flex-wrap gap-6 animate-fade-up delay-400">
               {STATS.map((s) => (
                 <div key={s.num}>
-                  <div className="font-[Outfit] font-black text-[clamp(1.75rem,3vw,2.25rem)] text-accent leading-none">
+                  <div className="font-[Outfit] font-black text-[clamp(1.5rem,2.5vw,2rem)] text-accent leading-none">
                     {s.num}
                   </div>
-                  <div className="text-[#7a7a95] text-sm mt-1 font-[Outfit]">{s.label}</div>
+                  <div className="text-[#7a7a95] text-xs mt-1 font-[Outfit]">{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Floating card — desktop right / mobile below */}
-          <div className="mt-12 xl:mt-0 xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2 bg-[#10121a] border border-white/[0.07] rounded-2xl p-6 w-full sm:max-w-[360px] xl:w-[270px] mx-auto xl:mx-0 animate-float shadow-2xl shadow-black/40">
+          {/*
+           * ── Floating Results Card ───────────────────────
+           * Desktop (xl+): absolutely positioned, right edge,
+           *   top-1/2 + -translate-y-1/2 = perfectly vertically
+           *   centered relative to the section.
+           * Mobile/tablet: static block, full-width, below copy.
+           *   Shown only on screens < xl to avoid overflow issues.
+           */}
+          <div
+            className="
+              hidden xl:flex
+              xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2
+              flex-col
+              bg-[#10121a] border border-white/[0.07] rounded-2xl p-6
+              w-[260px]
+              animate-float shadow-2xl shadow-black/40
+            "
+          >
             <div className="flex items-center gap-2 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse" />
               <span className="text-[#10b981] text-xs font-[Outfit] font-bold uppercase tracking-wider">
@@ -89,10 +208,10 @@ export default function HomePage() {
             ].map(({ l, v, c }) => (
               <div
                 key={l}
-                className="flex justify-between items-center py-3 border-b border-white/[0.05] last:border-0 gap-4"
+                className="flex justify-between items-center py-3 border-b border-white/[0.05] last:border-0 gap-3"
               >
-                <span className="text-[#7a7a95] text-sm font-[Outfit] leading-snug">{l}</span>
-                <span className="font-[Outfit] font-bold text-base shrink-0" style={{ color: c }}>
+                <span className="text-[#7a7a95] text-xs font-[Outfit] leading-snug">{l}</span>
+                <span className="font-[Outfit] font-bold text-sm shrink-0" style={{ color: c }}>
                   {v}
                 </span>
               </div>
@@ -100,6 +219,34 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Results card for mobile/tablet — shown below hero on < xl */}
+      <div className="xl:hidden px-4 pt-6 pb-2">
+        <div className="max-w-[420px] mx-auto bg-[#10121a] border border-white/[0.07] rounded-2xl p-6 shadow-2xl shadow-black/40">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse" />
+            <span className="text-[#10b981] text-xs font-[Outfit] font-bold uppercase tracking-wider">
+              Live Client Results
+            </span>
+          </div>
+          {[
+            { l: "Organic Traffic Growth", v: "+340%", c: "#10b981" },
+            { l: "Google Ads ROAS",        v: "8.2×",  c: "#f97316" },
+            { l: "Leads Generated / Mo",   v: "1,240", c: "#3b82f6" },
+            { l: "Avg. Revenue Growth",    v: "+280%", c: "#f59e0b" },
+          ].map(({ l, v, c }) => (
+            <div
+              key={l}
+              className="flex justify-between items-center py-3 border-b border-white/[0.05] last:border-0 gap-4"
+            >
+              <span className="text-[#7a7a95] text-sm font-[Outfit] leading-snug">{l}</span>
+              <span className="font-[Outfit] font-bold text-base shrink-0" style={{ color: c }}>
+                {v}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ── MARQUEE ──────────────────────────────────────── */}
       <div className="bg-accent py-3 overflow-hidden" aria-hidden="true">
@@ -111,7 +258,10 @@ export default function HomePage() {
               "Ecommerce Marketing", "Social Media Management",
               "Growth Hacking", "Lead Generation", "Brand Strategy",
             ].map((t, i) => (
-              <span key={`${r}-${i}`} className="font-[Outfit] font-bold text-sm text-white uppercase tracking-widest">
+              <span
+                key={`${r}-${i}`}
+                className="font-[Outfit] font-bold text-sm text-white uppercase tracking-widest"
+              >
                 {t}&nbsp;•
               </span>
             ))
@@ -120,19 +270,19 @@ export default function HomePage() {
       </div>
 
       {/* ── ABOUT ────────────────────────────────────────── */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <SectionHeader
               tag="About SJM"
               title='We Are Your <span class="grad-text">Digital Growth</span> Partner'
-              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy, building campaigns that directly improve your revenue."
+              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy — building campaigns that directly improve your revenue."
             />
             <ul className="space-y-3 mb-8" role="list">
               {[
                 "Transparent reporting with real-time client dashboards",
                 "Dedicated account manager assigned to every project",
-                "Data-first methodology, zero vanity metrics, only business results",
+                "Data-first methodology — zero vanity metrics, only business results",
                 "Industry specialists across 12+ verticals and markets",
                 "Proven growth frameworks delivering consistent, compounding ROI",
               ].map((t) => (
@@ -176,34 +326,23 @@ export default function HomePage() {
 
       <div className="divider mx-4 sm:mx-6" />
 
-      {/* ── SERVICES ─────────────────────────────────────── */}
-      <section className="py-24 px-4">
+      {/* ── SERVICES (Tabbed) ─────────────────────────────── */}
+      <section className="py-20 px-4">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Our Services"
             title='Full-Stack Digital Marketing <span class="grad-text">Services</span>'
-            sub="From SEO to paid ads, social media to web development, SJM covers the entire digital spectrum with specialist-level expertise and accountable results."
+            sub="From SEO to paid ads, social media to web development — SJM covers the entire digital spectrum with specialist-level expertise and accountable results."
             center
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {SERVICES.map((s) => (
-              <ServiceCard
-                key={s.id}
-                emoji={s.emoji}
-                title={s.shortLabel}
-                desc={s.tagline}
-                href={`/services/${s.id}`}
-                color={s.color}
-              />
-            ))}
-          </div>
+          <TabbedServices />
         </div>
       </section>
 
       <div className="divider mx-4 sm:mx-6" />
 
       {/* ── WHY SJM ──────────────────────────────────────── */}
-      <section className="py-24 px-4 bg-white/[0.01]">
+      <section className="py-20 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Why SJM"
@@ -214,7 +353,7 @@ export default function HomePage() {
             {[
               {
                 title: "100% Data-Driven Decisions",
-                desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork ever.",
+                desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork — ever.",
               },
               {
                 title: "Revenue-Focused Marketing",
@@ -222,7 +361,7 @@ export default function HomePage() {
               },
               {
                 title: "Full-Funnel Expertise",
-                desc: "From first touch to repeat purchase, SJM builds marketing systems that perform at every stage of the funnel.",
+                desc: "From first touch to repeat purchase — SJM builds marketing systems that perform at every stage of the funnel.",
               },
               {
                 title: "Fast Campaign Execution",
@@ -230,14 +369,17 @@ export default function HomePage() {
               },
               {
                 title: "Radical Transparency",
-                desc: "Live dashboards, monthly performance reports, weekly calls. No surprises, just full visibility.",
+                desc: "Live dashboards, monthly performance reports, weekly calls. No surprises — just full visibility.",
               },
               {
                 title: "Scalable Growth Systems",
-                desc: "We engineer repeatable, compounding growth systems, not short-lived campaigns that lose momentum.",
+                desc: "We engineer repeatable, compounding growth systems — not short-lived campaigns that lose momentum.",
               },
             ].map(({ title, desc }) => (
-              <div key={title} className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-7 card-hover">
+              <div
+                key={title}
+                className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-7 card-hover"
+              >
                 <h3 className="font-[Outfit] font-bold text-[1.05rem] text-white mb-2.5">{title}</h3>
                 <p className="text-[#7a7a95] text-sm leading-relaxed font-[Outfit]">{desc}</p>
               </div>
@@ -247,7 +389,7 @@ export default function HomePage() {
       </section>
 
       {/* ── SEO PROCESS ──────────────────────────────────── */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <SectionHeader
@@ -268,7 +410,6 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            
           </div>
 
           <div className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-8 lg:sticky lg:top-24">
@@ -304,7 +445,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CASE STUDIES ─────────────────────────────────── */}
-      <section className="py-24 px-4 bg-white/[0.01]">
+      <section className="py-20 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Case Studies"
@@ -329,7 +470,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────── */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-[1200px] mx-auto">
           <SectionHeader
             tag="Client Reviews"
@@ -345,7 +486,7 @@ export default function HomePage() {
       </section>
 
       {/* ── INDUSTRIES ───────────────────────────────────── */}
-      <section className="py-20 px-4 bg-white/[0.01]">
+      <section className="py-16 px-4 bg-white/[0.01]">
         <div className="max-w-[1200px] mx-auto text-center">
           <SectionHeader
             tag="Industries We Serve"
@@ -366,14 +507,17 @@ export default function HomePage() {
       </section>
 
       {/* ── BLOG ─────────────────────────────────────────── */}
-      <section className="py-24 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-end justify-between mb-12 flex-wrap gap-4">
             <SectionHeader
               tag="Digital Marketing Blog"
               title='Marketing <span class="grad-text">Insights & Strategies</span>'
             />
-            <Link href="/blog" className="text-accent font-[Outfit] font-bold text-sm hover:underline shrink-0">
+            <Link
+              href="/blog"
+              className="text-accent font-[Outfit] font-bold text-sm hover:underline shrink-0"
+            >
               View All Articles →
             </Link>
           </div>
@@ -386,7 +530,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ──────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-white/[0.01]">
+      <section className="py-16 px-4 bg-white/[0.01]">
         <div className="max-w-[760px] mx-auto">
           <SectionHeader
             tag="FAQ"
