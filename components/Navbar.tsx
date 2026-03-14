@@ -323,7 +323,7 @@ export default function Navbar() {
             href="https://wa.me/917291001898"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center justify-center gap-2 w-full bg-[#25d366]/10 border border-[#25d366]/30 text-[#25d366] font-syne font-600 py-3 rounded-xl hover:bg-[#25d366]/15 transition-colors"
+            className="flex items-center justify-center gap-2 w-full bg-[#25d366]/10 border border-[#25d366]/30 text-[#25d366] font-syne font-semibold py-3 rounded-xl hover:bg-[#25d366]/15 transition-colors"
             >
             💬 WhatsApp Us
           </a>
