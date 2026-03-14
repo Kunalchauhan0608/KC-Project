@@ -47,6 +47,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+
+        {/* WhatsApp Floating Icon */}
+        <a
+          href="https://wa.me/917291001898"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-[9999] w-14 h-14 flex items-center justify-center bg-[#25D366] rounded-full shadow-lg hover:scale-110 transition-all duration-300"
+        >
+          💬
+        </a>
       </body>
     </html>
   );

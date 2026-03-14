@@ -87,13 +87,7 @@ export default function ServiceDetailPage({ params }: Props) {
                   </div>
                 ))}
               </div>
-              <a
-                   href="https://wa.me/917291001898"
-                   target="_blank"
-                   rel="noreferrer"
-                   className="flex items-center justify-center gap-2 w-full bg-[#25d366]/10 border border-[#25d366]/30 text-[#25d366] font-syne font-600 py-3 rounded-xl hover:bg-[#25d366]/15 transition-colors">
-                   💬 WhatsApp for Quick Quote
-              </a>
+              
             </div>
           </div>
         </div>
@@ -108,7 +102,7 @@ export default function ServiceDetailPage({ params }: Props) {
               Our <span className="grad-text">{service.shortLabel} Services</span> in Detail
             </h2>
             <p className="text-[#7a7a95] max-w-[520px] mx-auto text-sm leading-relaxed">
-              Everything covered under this service — delivered by certified specialists, tracked with real-time metrics.
+              Everything covered under this service, delivered by certified specialists, tracked with real-time metrics.
             </p>
           </div>
 
