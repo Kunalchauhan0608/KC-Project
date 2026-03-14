@@ -127,7 +127,7 @@ export default function Navbar() {
                     href="/services"
                     className="col-span-2 flex items-center gap-2 px-3 py-2.5 rounded-xl bg-accent/10 border border-accent/20 text-accent text-sm font-[Outfit] font-bold mb-2 hover:bg-accent/15 transition-colors"
                   >
-                    <span>🚀</span> All Services Overview
+                   All Services Overview
                   </Link>
                   {services.map((s) => (
                     <Link
