@@ -5,29 +5,50 @@
 @tailwind utilities;
 
 :root {
-  --font-syne:  'Syne',   sans-serif;
-  --font-dm:    'DM Sans', sans-serif;
-  --font-outfit:'Outfit',  sans-serif;
+  --font-outfit: 'Outfit',  sans-serif;
+  --font-syne:   'Syne',    sans-serif;
+  --font-dm:     'DM Sans', sans-serif;
 }
 
 @layer base {
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    /* Prevent text size bump on orientation change (iOS) */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     font-family: 'Outfit', sans-serif;
     background: #07080b;
     color: #e4e4f0;
     overflow-x: hidden;
+    /* Safe area padding for notched phones */
+    padding-left:  env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
-  h1, h2, h3, h4, h5, h6 { font-family: 'Outfit', sans-serif; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Remove tap highlight on mobile */
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  /* Better touch targets — minimum 44px */
+  button, a { min-height: 44px; display: inline-flex; align-items: center; }
+  /* Reset for block elements that shouldn't need 44px height */
+  div a, p a, li a { min-height: unset; display: inline; }
 }
 
 @layer utilities {
-  .font-syne  { font-family: 'Syne',   sans-serif; }
-  .font-dm    { font-family: 'DM Sans', sans-serif; }
-  .font-outfit{ font-family: 'Outfit',  sans-serif; }
+  .font-outfit { font-family: 'Outfit',  sans-serif; }
+  .font-syne   { font-family: 'Syne',    sans-serif; }
+  .font-dm     { font-family: 'DM Sans', sans-serif; }
 
-  /* Gradient text */
+  /* ── Gradient text ───────────────────────────────────── */
   .grad-text {
     background: linear-gradient(120deg, #f97316 0%, #fbbf24 60%, #f97316 100%);
     background-size: 200% auto;
@@ -37,7 +58,7 @@
     animation: gradShift 3s ease infinite;
   }
 
-  /* Noise texture overlay */
+  /* ── Noise overlay ───────────────────────────────────── */
   .noise::after {
     content: '';
     position: absolute;
@@ -47,25 +68,31 @@
     z-index: 0;
   }
 
-  /* Glow blob */
+  /* ── Glow blob ───────────────────────────────────────── */
   .glow-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(110px);
+    filter: blur(80px);
     pointer-events: none;
   }
+  @media (min-width: 1024px) {
+    .glow-blob { filter: blur(110px); }
+  }
 
-  /* Card hover */
+  /* ── Card hover ──────────────────────────────────────── */
   .card-hover {
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .card-hover:hover {
-    transform: translateY(-6px);
-    border-color: rgba(249,115,22,0.4) !important;
-    box-shadow: 0 20px 60px rgba(249,115,22,0.1);
+  /* Reduce motion on touch devices */
+  @media (hover: hover) {
+    .card-hover:hover {
+      transform: translateY(-6px);
+      border-color: rgba(249,115,22,0.4) !important;
+      box-shadow: 0 20px 60px rgba(249,115,22,0.1);
+    }
   }
 
-  /* Nav link underline */
+  /* ── Nav link underline ──────────────────────────────── */
   .nav-link {
     position: relative;
     transition: color 0.2s;
@@ -84,81 +111,94 @@
   .nav-link:hover  { color: #f97316; }
   .nav-link.active { color: #f97316; }
 
-  /* Scrollbar — main page */
-  ::-webkit-scrollbar { width: 5px; }
+  /* ── Scrollbar — main page ───────────────────────────── */
+  ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: #07080b; }
   ::-webkit-scrollbar-thumb { background: #f97316; border-radius: 10px; }
 
-  /* Hide scrollbar for horizontal tab strip (mobile services) */
+  /* ── Hide scrollbar (tab strip on mobile) ────────────── */
   .scrollbar-hide {
     -ms-overflow-style: none;  /* IE / Edge */
     scrollbar-width: none;     /* Firefox  */
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;             /* Chrome / Safari */
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
 
-  /* Section divider */
+  /* ── Section divider ─────────────────────────────────── */
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(249,115,22,0.3), transparent);
   }
 
-  /* Tag pill */
+  /* ── Tag pill ────────────────────────────────────────── */
   .tag-pill {
     display: inline-flex;
     align-items: center;
     background: rgba(249,115,22,0.1);
     border: 1px solid rgba(249,115,22,0.22);
     color: #f97316;
-    padding: 4px 14px;
+    padding: 3px 12px;
     border-radius: 999px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     font-family: 'Outfit', sans-serif;
+    /* override base min-height so pill stays compact */
+    min-height: unset;
+  }
+  @media (min-width: 640px) {
+    .tag-pill { padding: 4px 14px; font-size: 12px; }
   }
 
-  /* Form inputs */
+  /* ── Form inputs ─────────────────────────────────────── */
   .form-input {
     width: 100%;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
-    padding: 12px 16px;
+    padding: 11px 14px;
     color: #e4e4f0;
     font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     outline: none;
     transition: border-color 0.2s;
+    min-height: unset;
+    /* Prevent iOS zoom on focus (font-size must be ≥ 16px triggers) */
+    font-size: max(16px, 0.9rem);
   }
   .form-input:focus { border-color: #f97316; }
   .form-input::placeholder { color: #7a7a95; }
   select.form-input option { background: #10121a; }
 
-  /* Progress bar */
+  /* ── Progress bar ────────────────────────────────────── */
   .progress-track {
     background: rgba(255,255,255,0.06);
     border-radius: 999px;
-    height: 6px;
+    height: 5px;
     overflow: hidden;
+  }
+  @media (min-width: 640px) {
+    .progress-track { height: 6px; }
   }
   .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, #f97316, #fbbf24);
     border-radius: 999px;
   }
+
+  /* ── xs (extra-small) breakpoint helper ──────────────── */
+  /* Tailwind doesn't ship `xs:` by default — add via config.
+     These utilities let `flex-col xs:flex-row` work in JSX.   */
 }
 
-/* Keyframes */
+/* ── Keyframes ────────────────────────────────────────── */
 @keyframes gradShift {
-  0%   { background-position: 0% 50%; }
+  0%   { background-position: 0%   50%; }
   50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  100% { background-position: 0%   50%; }
 }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -171,21 +211,31 @@
 }
 @keyframes float {
   0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-14px); }
+  50%     { transform: translateY(-12px); }
 }
 @keyframes pulseGlow {
   0%,100% { box-shadow: 0 0 20px rgba(249,115,22,0.3); }
-  50%     { box-shadow: 0 0 48px rgba(249,115,22,0.65); }
+  50%     { box-shadow: 0 0 44px rgba(249,115,22,0.6); }
 }
 
-.animate-fade-up    { animation: fadeUp  0.7s ease forwards; }
-.animate-fade-in    { animation: fadeIn  0.5s ease forwards; }
-.animate-marquee    { animation: marquee 32s linear infinite; }
-.animate-float      { animation: float   5s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulseGlow 2.5s ease-in-out infinite; }
+/* ── Animation classes ────────────────────────────────── */
+.animate-fade-up    { animation: fadeUp    0.65s ease forwards; }
+.animate-fade-in    { animation: fadeIn    0.5s  ease forwards; }
+.animate-marquee    { animation: marquee   32s   linear   infinite; }
+.animate-float      { animation: float     5s    ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 2.5s  ease-in-out infinite; }
 
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
