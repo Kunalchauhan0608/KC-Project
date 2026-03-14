@@ -102,7 +102,9 @@ export default function HomePage() {
           <div className="w-full lg:max-w-[640px] xl:max-w-[680px]">
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-accent font-[Outfit] font-semibold mb-5 animate-fade-in">
+            <div
+            style={{ marginBottom: "20px" }}
+             className="inline-flex items-center gap-2 bg-accent/10 border border-accent/20 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm text-accent font-[Outfit] font-semibold mb-5 animate-fade-in">
               <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-accent animate-pulse shrink-0" />
               <span>India&apos;s #1 Performance-Driven Digital Marketing Agency</span>
             </div>
