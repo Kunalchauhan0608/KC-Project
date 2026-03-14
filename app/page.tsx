@@ -27,7 +27,7 @@ function TabbedServices() {
 
   return (
     <div>
-      {/* Tab buttons — horizontal scroll on mobile */}
+      {/* Tab buttons, horizontal scroll on mobile */}
       <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap mb-8">
         {CATEGORIES.map((cat) => (
           <button
@@ -118,8 +118,7 @@ export default function HomePage() {
             {/* Body */}
             <p className="text-[#9090b0] text-[clamp(0.875rem,2vw,1.05rem)] leading-[1.7] mb-7 font-[Outfit] animate-fade-up delay-200 max-w-[560px]">
               SJM helps startups and established brands scale faster with expert SEO, Google Ads,
-              Meta Ads, and full-funnel performance marketing. Every campaign is built around
-              measurable ROI — no fluff, just results.
+              Meta Ads, and full-funnel performance marketing. 
             </p>
 
             {/* CTAs */}
@@ -154,7 +153,7 @@ export default function HomePage() {
           </div>
 
           {/*
-           * Results card — desktop only (xl+), absolutely centered right.
+           * Results card, desktop only (xl+), absolutely centered right.
            * On mobile/tablet it is rendered separately below the hero.
            */}
           <div className="hidden xl:flex xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2 flex-col bg-[#10121a] border border-white/[0.07] rounded-2xl p-5 w-[250px] animate-float shadow-2xl shadow-black/40">
@@ -179,7 +178,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Results card — mobile & tablet only (below hero) */}
+      {/* Results card, mobile & tablet only (below hero) */}
       <div className="xl:hidden px-4 pt-6 pb-2">
         <div className="max-w-sm mx-auto bg-[#10121a] border border-white/[0.07] rounded-2xl p-5 shadow-xl shadow-black/30">
           <div className="flex items-center gap-2 mb-4">
@@ -229,13 +228,13 @@ export default function HomePage() {
             <SectionHeader
               tag="About SJM"
               title='We Are Your <span class="grad-text">Digital Growth</span> Partner'
-              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy — building campaigns that directly improve your revenue."
+              sub="SJM isn't just another digital marketing agency. We're a full-stack growth team combining analytical precision with creative strategy, building campaigns that directly improve your revenue."
             />
             <ul className="space-y-3 mb-8" role="list">
               {[
                 "Transparent reporting with real-time client dashboards",
                 "Dedicated account manager assigned to every project",
-                "Data-first methodology — zero vanity metrics, only business results",
+                "Data-first methodology, zero vanity metrics, only business results",
                 "Industry specialists across 12+ verticals and markets",
                 "Proven growth frameworks delivering consistent, compounding ROI",
               ].map((t) => (
@@ -272,7 +271,7 @@ export default function HomePage() {
           <SectionHeader
             tag="Our Services"
             title='Full-Stack Digital Marketing <span class="grad-text">Services</span>'
-            sub="From SEO to paid ads, social media to web development — SJM covers the entire digital spectrum with specialist-level expertise."
+            sub="From SEO to paid ads, social media to web development, SJM covers the entire digital spectrum with specialist-level expertise."
             center
           />
           <TabbedServices />
@@ -291,12 +290,12 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {[
-              { title: "100% Data-Driven Decisions",  desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork — ever." },
+              { title: "100% Data-Driven Decisions",  desc: "Every strategy is backed by analytics, A/B testing, and real conversion data. No guesswork, ever." },
               { title: "Revenue-Focused Marketing",    desc: "We optimise for revenue and profit margins, not impressions or clicks. Your growth is our KPI." },
-              { title: "Full-Funnel Expertise",        desc: "From first touch to repeat purchase — SJM builds marketing systems that perform at every funnel stage." },
+              { title: "Full-Funnel Expertise",        desc: "From first touch to repeat purchase, SJM builds marketing systems that perform at every funnel stage." },
               { title: "Fast Campaign Execution",      desc: "Campaigns go live within days. Our agile teams move at the pace your business demands." },
-              { title: "Radical Transparency",         desc: "Live dashboards, monthly performance reports, weekly calls. No surprises — just full visibility." },
-              { title: "Scalable Growth Systems",      desc: "We engineer repeatable, compounding growth systems — not short-lived campaigns that lose momentum." },
+              { title: "Radical Transparency",         desc: "Live dashboards, monthly performance reports, weekly calls. No surprises, just full visibility." },
+              { title: "Scalable Growth Systems",      desc: "We engineer repeatable, compounding growth systems, not short-lived campaigns that lose momentum." },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-[#10121a] border border-white/[0.07] rounded-2xl p-6 sm:p-7 card-hover">
                 <h3 className="font-[Outfit] font-bold text-[1rem] sm:text-[1.05rem] text-white mb-2">{title}</h3>
@@ -460,7 +459,7 @@ export default function HomePage() {
       {/* ── CTA ──────────────────────────────────────────── */}
       <CTABanner
         title='Ready to Grow? Let&apos;s Build Your <span class="grad-text">Digital Success Story</span>'
-        sub="Book a free 30-minute strategy session with an SJM expert. No commitment — just a clear roadmap to grow your business online."
+        sub="Book a free 30-minute strategy session with an SJM expert. No commitment, just a clear roadmap to grow your business online."
       />
     </>
   );
