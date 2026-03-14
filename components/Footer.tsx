@@ -151,11 +151,11 @@ export default function Footer() {
 
       {/* WhatsApp FAB */}
       <a
-        href="https://wa.me/919876543210"
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 bg-[#25d366] rounded-full flex items-center justify-center text-xl sm:text-2xl shadow-xl shadow-[#25d366]/30 hover:scale-110 transition-transform z-40"
-        aria-label="Chat on WhatsApp"
+        href="https://wa.me/917291001898"
+                   target="_blank"
+                   rel="noreferrer"
+                   className="flex items-center justify-center gap-2 w-full bg-[#25d366]/10 border border-[#25d366]/30 text-[#25d366] font-syne font-600 py-3 rounded-xl hover:bg-[#25d366]/15 transition-colors"
+                   aria-label="Chat on WhatsApp"
       >
         💬
       </a>
