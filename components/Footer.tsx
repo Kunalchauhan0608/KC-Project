@@ -149,9 +149,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* WhatsApp FAB */}
       {/* WhatsApp Slider */}
-<div className="fixed right-0 bottom-24 z-[9999] group flex items-center">
+<div className="fixed right-0 bottom-10 z-[9999] group flex items-center">
 
   <a
     href="https://wa.me/917291001898"
