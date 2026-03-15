@@ -263,7 +263,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-5 h-[64px] border-b border-white/[0.07]">
 
         <Image
-          src="/images/logo.png"
+          src="/image/sjm website logo.png"
           alt="logo"
           width={30}
           height={30}
