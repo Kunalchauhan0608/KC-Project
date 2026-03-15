@@ -98,7 +98,7 @@ export default function ContactPage() {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs text-[#7a7a95] mb-1.5 font-syne font-600">Phone Number</label>
-                      <input className="form-input" placeholder="+91 98765 43210" value={form.phone} onChange={update("phone")} />
+                      <input className="form-input" placeholder="+91 7291001898" value={form.phone} onChange={update("phone")} />
                     </div>
                     <div>
                       <label className="block text-xs text-[#7a7a95] mb-1.5 font-syne font-600">Business Website</label>
@@ -153,9 +153,9 @@ export default function ContactPage() {
             <h2 className="font-syne font-800 text-xl text-white mb-2">Get in Touch Directly</h2>
 
             {[
-              { icon: "✉️", label: "Email Us", val: "hello@shreejimarketers.com", sub: "Reply within 4 business hours", href: "mailto:hello@shreejimarketers.com" },
-              { icon: "📞", label: "Call Us", val: "+91 98765 43210", sub: "Mon–Sat, 10am–7pm IST", href: "tel:+919876543210" },
-              { icon: "📍", label: "Office", val: "Ring Road, Surat, Gujarat 395002", sub: "India", href: "#" },
+              { icon: "✉️", label: "Email Us", val: "contact@shreejimarketers.com", sub: "Reply within 4 business hours", href: "contact@shreejimarketers.com" },
+              { icon: "📞", label: "Call Us", val: "+91 7291001898", sub: "Mon–Sat, 10am–7pm IST", href: "tel:+917291001898" },
+              { icon: "📍", label: "Office", val: "Shiv mandir Road Bakhtawarpur, Delhi-110036", sub: "India", href: "#" },
             ].map(({ icon, label, val, sub, href }) => (
               <a key={label} href={href}
                 className="flex items-start gap-4 p-5 bg-[#10121a] border border-white/7 rounded-xl hover:border-accent/25 transition-all group block"
@@ -171,24 +171,36 @@ export default function ContactPage() {
               </a>
             ))}
 
-            {/* WhatsApp */}
             <a
-              href="https://wa.me/919876543210"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-4 p-5 bg-[#25d366]/8 border border-[#25d366]/25 rounded-xl hover:bg-[#25d366]/12 transition-all"
-            >
-              <div className="w-11 h-11 bg-[#25d366]/15 rounded-xl flex items-center justify-center text-2xl shrink-0">
-                💬
-              </div>
-              <div>
-                <div className="font-syne font-700 text-[#25d366] text-sm mb-0.5">WhatsApp Chat</div>
-                <div className="text-[#7a7a95] text-xs">Instant response from our team</div>
-              </div>
-              <svg className="w-4 h-4 text-[#25d366] ml-auto" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
+  href="https://wa.me/917291001898"
+  target="_blank"
+  rel="noreferrer"
+  className="flex items-center gap-4 p-5 bg-[#25d366]/8 border border-[#25d366]/25 rounded-xl hover:bg-[#25d366]/12 transition-all"
+>
+  <div className="w-11 h-11 bg-[#25d366]/15 rounded-xl flex items-center justify-center text-2xl shrink-0">
+    💬
+  </div>
+
+  <div>
+    <div className="font-syne font-700 text-[#25d366] text-sm mb-0.5">
+      WhatsApp Chat
+    </div>
+    <div className="text-[#7a7a95] text-xs">
+      Instant response from our team
+    </div>
+  </div>
+
+  <svg
+    className="w-4 h-4 text-[#25d366] ml-auto"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    viewBox="0 0 24 24"
+  >
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
+  </svg>
+</a>
 
             {/* Map placeholder */}
             <div className="bg-[#10121a] border border-white/7 rounded-xl overflow-hidden">

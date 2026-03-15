@@ -104,9 +104,9 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-3 mb-6">
               {[
-                { icon: "✉",  text: "hello@sjm.in" },
-                { icon: "📞", text: "+91 98765 43210" },
-                { icon: "📍", text: "Surat, Gujarat, India" },
+                { icon: "✉",  text: "contact@shreejimarketers.com" },
+                { icon: "📞", text: "+91 7291001898" },
+                { icon: "📍", text: "New Delhi, India" },
               ].map(({ icon, text }) => (
                 <div key={text} className="flex items-start gap-2.5 text-sm text-[#7a7a95] font-[Outfit]">
                   <span className="text-accent mt-0.5 shrink-0">{icon}</span>

@@ -44,7 +44,7 @@ export default function ServiceDetailPage({ params }: Props) {
             <div>
               <div className="text-5xl mb-5">{service.emoji}</div>
               <div className="tag-pill mb-4">{service.shortLabel}</div>
-              <h1 className="font-syne font-800 text-[clamp(2rem,4vw,3rem)] text-white leading-tight mb-4">
+              <h1 className="font-[Outfit] font-extrabold text-[clamp(2rem,4vw,3rem)] text-white">
                 <span className="grad-text">{service.tagline}</span>
               </h1>
               <p className="text-[#9090b0] text-lg leading-relaxed mb-8">{service.desc}</p>
