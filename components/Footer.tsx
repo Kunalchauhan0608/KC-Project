@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
   { href: "/services/seo",                   label: "SEO Services" },
@@ -24,14 +25,21 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 bg-gradient-to-br from-accent to-[#ea580c] rounded-[10px] flex items-center justify-center font-[Outfit] font-black text-[14px] text-white">
-                SJM
-              </div>
-              <span className="font-[Outfit] font-black text-lg text-white tracking-tight">
-                S<span className="text-accent">JM</span>
-              </span>
-            </Link>
+            <Link href="/" className="flex items-center gap-2.5 mb-4 shrink-0">
+
+    <Image
+      src="/image/sjm website logo.png"
+      alt="SJM Logo"
+      width={50}
+      height={50}
+      className="rounded-md"
+    />
+
+    <span className="font-[Outfit] font-black text-base sm:text-lg text-white leading-none tracking-tight">
+      S<span className="text-accent">JM</span>
+    </span>
+
+  </Link>
             <p className="text-[#7a7a95] text-sm leading-relaxed mb-5 font-[Outfit] max-w-[280px]">
               Smart Marketing. Real Growth. Data-driven digital strategies that deliver measurable results for brands of all sizes.
             </p>
@@ -137,7 +145,7 @@ export default function Footer() {
         {/* Bottom — stacks on mobile */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-[#7a7a95] text-xs font-[Outfit]">
-            © 2025 SJM. All rights reserved.
+            © 2026 SJM. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-5">
             {["Privacy Policy", "Terms of Service", "Sitemap"].map((t) => (

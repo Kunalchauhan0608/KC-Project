@@ -4,7 +4,7 @@ import { SERVICES } from "@/lib/data";
 import { PageHero, CTABanner } from "@/components/UI";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Services — SEO, Google Ads, Meta Ads & More",
+  title: "Digital Marketing Services | SEO, Google Ads, Meta Ads & More",
   description: "Explore all SJM digital marketing services: SEO, Google Ads, Meta Ads, Performance Marketing, Video Creation, Web Development, Graphic Design, and more.",
 };
 
@@ -14,7 +14,7 @@ export default function ServicesPage() {
       <PageHero
         tag="Our Services"
         title='Full-Stack <span class="grad-text">Digital Marketing</span> Services'
-        sub="From SEO to social media, paid ads to web development — everything your brand needs to dominate the digital landscape."
+        sub="From SEO to social media, paid ads to web development, everything your brand needs to dominate the digital landscape."
       />
 
       <section className="py-16 px-4">

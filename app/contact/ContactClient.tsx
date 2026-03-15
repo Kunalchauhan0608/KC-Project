@@ -206,9 +206,9 @@ export default function ContactPage() {
             <div className="bg-[#10121a] border border-white/7 rounded-xl overflow-hidden">
               <div className="h-48 bg-gradient-to-br from-slate-900 to-slate-800 flex flex-col items-center justify-center gap-2">
                 <div className="text-4xl">🗺️</div>
-                <div className="text-[#7a7a95] text-sm">Surat, Gujarat, India</div>
+                <div className="text-[#7a7a95] text-sm"> New Delhi, India</div>
                 <a
-                  href="https://maps.google.com/?q=Surat,Gujarat"
+                  href="https://share.google/q9tZKMxJDw02hXj2t"
                   target="_blank"
                   rel="noreferrer"
                   className="text-accent text-sm font-syne font-700 hover:underline"
