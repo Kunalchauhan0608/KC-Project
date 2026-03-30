@@ -111,7 +111,7 @@ export default function HomePage() {
 
             {/* H1 */}
             <h1 className="font-[Outfit] font-extrabold text-[clamp(1.9rem,6vw,3.5rem)] leading-[1.1] tracking-tight text-white mb-4 sm:mb-5 animate-fade-up">
-              Digital Marketing Agency
+              Digital Marketing Agency BY Kunal Chauhan
               <br />
               That Delivers{" "}
               <span className="grad-text">Real Business Growth</span>
